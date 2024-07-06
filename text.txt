@@ -1,0 +1,37 @@
+Workflow:
+Noise Reduction (DeNoise.m):
+Create a folder named 'labeledImage'.
+Run DeNoise.m to apply noise reduction techniques to the images.
+Image Splitting (Split.m):
+Create a folder named 'SplitLabeledImage' with three sub-folders: '0', '1', and '2'.
+Run Split.m to split the denoised images into three parts, each containing a single digit.
+Network Training (trainer.m):
+Run trainer.m to train a CNN using the split images.
+The trained network is saved as 'net.mat'.
+Classifier Evaluation (evaluate_classifier.m):
+Run evaluate_classifier.m to evaluate the performance of the trained classifier.
+
+Processes:
+Image Preprocessing:
+Convert the original image I to a binary image Ibinary using thresholding.
+Use imclose to remove noise from the binary image, resulting in IbinaryAfterClosing.
+Image Splitting:
+Split the denoised image into three parts, each containing a single digit.
+Save the split images into the respective sub-folders '0', '1', and '2'.
+CNN Design:
+The CNN architecture is designed with the following layers:
+imageInputLayer: Input layer with dimensions [50 35 1] to accommodate the image size.
+convolution2dLayer: Three convolutional layers with different filter sizes and numbers of filters, followed by batch normalization and ReLU activation.
+maxPooling2dLayer: Two max-pooling layers to reduce spatial dimensions.
+fullyConnectedLayer: Fully connected layer with 3 outputs.
+softmaxLayer: Softmax layer for classification.
+classificationLayer: Classification output layer.
+Classifier Testing (myclassifier.m):
+myclassifier.m is a script to prepare test images and classify them using the trained CNN.
+
+Codes:
+DeNoise.m: Implements noise reduction techniques on the images.
+Split.m: Splits denoised images into three parts and saves them in '0', '1', or '2' folders based on the digit they contain.
+trainer.m: Trains the CNN using split images and saves the trained network as 'net.mat'.
+evaluate_classifier.m: Evaluates the classifier's performance using the test data and the trained network.
+myclassifier.m: Prepares test images and classifies them using the trained CNN.
